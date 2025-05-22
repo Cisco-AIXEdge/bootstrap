@@ -35,11 +35,3 @@ jobs:
     - name: Upload file 4
       run: |
         aws s3 cp ./proxy_setup.sh s3://${{ secrets.S3_BUCKET_NAME }}/proxy_setup.sh
-        
-    - name: Set file permissions (optional)
-      run: |
-        # Make files publicly readable if needed
-        aws s3api put-object-acl --bucket ${{ secrets.S3_BUCKET_NAME }} --key copilot-init.cfg --acl public-read
-        aws s3api put-object-acl --bucket ${{ secrets.S3_BUCKET_NAME }} --key dhcp.tar --acl public-read
-        aws s3api put-object-acl --bucket ${{ secrets.S3_BUCKET_NAME }} --key disable_v6.sh --acl public-read
-        aws s3api put-object-acl --bucket ${{ secrets.S3_BUCKET_NAME }} --key proxy_setup.sh --acl public-read
